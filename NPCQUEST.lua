@@ -1,12 +1,12 @@
---[[ SCRIPT DESENVOLVIDO POR OTAVIO
-	CrÈditos a "GUGA, NICACIO" por ensinar a usar comandos
-	D⁄VIDA OU MODIFICA«’ES +55 11 9 4702 6877 
+--[[ SCRIPT DESENVOLVIDO POR OTAVIO PARA KINGDOMMU.COM.BR
+	Cr√©ditos a "GUGA, NICACIO" por ensinar a usar comandos
+	D√öVIDA OU MODIFICA√á√ïES +55 11 9 4702 6877 
 	
 	1-RODAR QUERY NO SQL (ALTER TABLE MonsterKillCount ADD [quest1] [int] NOT NULL DEFAULT 0 )
 	2-ADICIONAR OS MONSTROS NO CustomMonsterKillCount
 	3-ADICIONAR O NPC ONDE DESEJAR NO MAPA
 	
-	COM…RCIO COMPLETAMENTE PROÕBIDO]]--
+	COM√âRCIO COMPLETAMENTE PRO√çBIDO]]--
 
 
 
@@ -118,22 +118,22 @@ function OnNpcTalk(aIndex,bIndex)
 
 
 	 
---Miss„o 1
+--Miss√£o 1
 if RewardType == 1 then
 			
- if NPCQuest1 == NPC and Lista == 0 then  ChatTargetSend(aIndex,-1,""..Name..", vocÍ poderas nÛs ajudar ?")
+ if NPCQuest1 == NPC and Lista == 0 then  ChatTargetSend(aIndex,-1,""..Name..", voc√™ poderas n√≥s ajudar ?")
 	SQLQuery("UPDATE "..BD.." SET "..Mob.."="..MOBKill01..","..Quest.."= 2 WHERE Name= '"..Name.."'")
 		SQLFetch()
 			SQLClose()
-				MessageSend(bIndex,0,0,string.format("Ol· Cidad„o, que bom ver vocÍ agora, precisamos de sua ajuda, mate aquelas aranhas na saida de lorencia e lhe darei algum item!"))
+				MessageSend(bIndex,0,0,string.format("Ol√° Cidad√£o, que bom ver voc√™ agora, precisamos de sua ajuda, mate aquelas aranhas na saida de lorencia e lhe darei algum item!"))
 					NoticeSend(bIndex,1, ("Kailene lhe pediu para matar 35 aranhas"))
 	
-	elseif NPCQuest1 == NPC and Lista == 2 and Kill1 <= COUNTKILL1  then ChatTargetSend(aIndex,-1,"Receba sua recompenÁa ao retornar obtendo as mortes informada!")
-			MessageSend(bIndex,0,0, string.format("Ol·, precisamos que vocÍ mante 35 Spiders. AtÈ agora foram "..(Kill1).." Spiders mortas."))
+	elseif NPCQuest1 == NPC and Lista == 2 and Kill1 <= COUNTKILL1  then ChatTargetSend(aIndex,-1,"Receba sua recompen√ßa ao retornar obtendo as mortes informada!")
+			MessageSend(bIndex,0,0, string.format("Ol√°, precisamos que voc√™ mante 35 Spiders. At√© agora foram "..(Kill1).." Spiders mortas."))
 				NoticeSend(bIndex,1, ("Kailene lhe pediu para matar 35 aranhas"))
 
 	elseif NPCQuest1 == NPC  and  Lista == 2 and Kill1 >= COUNTKILL1  then
-			MessageSend(bIndex,0,0,string.format("Obrigada pela sua ajuda! H· mais residentes precisando da sua ajuda, encontre a Nakine em Devias"))
+			MessageSend(bIndex,0,0,string.format("Obrigada pela sua ajuda! H√° mais residentes precisando da sua ajuda, encontre a Nakine em Devias"))
 			SQLQuery("UPDATE "..BD.." SET quest1= 3, "..Mob.."="..MOBKill02..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
 				SQLQuery("UPDATE "..TablePcPoint.." SET "..ColumnPcPoint.."= "..ColumnPcPoint.."+"..RewardPcPoint.." WHERE "..PlayerPcPoint.."= '"..Conta.."'") --// Pagar via WCoin
 					SQLFetch()
@@ -142,35 +142,35 @@ if RewardType == 1 then
 								ItemGiveEx(bIndex, 7181,0,0,0,0,0,0)
 								
 							
-								NoticeSend(bIndex,1,(""..Name..", ParabÈns vocÍ Recebeu "..(RewardPcPoint).." "..(ColumnPcPoint).."!!"))
+								NoticeSend(bIndex,1,(""..Name..", Parab√©ns voc√™ Recebeu "..(RewardPcPoint).." "..(ColumnPcPoint).."!!"))
 	
-	elseif NPCQuest1 == NPC and Lista >= 3 and Dialogo1 == 0 then ChatTargetSend(aIndex,-1,"Obrigada, faÁa um Ûtimo proveito da recompenÁa")
-			MessageSend(bIndex,0,0,string.format("VocÍ ja me ajudou contra aquelas aranhas terrÌveis, em Devias precisa de vocÍ"))
+	elseif NPCQuest1 == NPC and Lista >= 3 and Dialogo1 == 0 then ChatTargetSend(aIndex,-1,"Obrigada, fa√ßa um √≥timo proveito da recompen√ßa")
+			MessageSend(bIndex,0,0,string.format("Voc√™ ja me ajudou contra aquelas aranhas terr√≠veis, em Devias precisa de voc√™"))
 				NoticeSend(bIndex,1,("Encontre Nakine em Devias")) 
 					SQLQuery("UPDATE "..BD.." SET Dialogo= 1 WHERE Name= '"..Name.."'");
 						SQLFetch();
 							SQLClose();
 					
-	elseif NPCQuest1 == NPC and Lista >= 3 and Dialogo1 == 1 then ChatTargetSend(aIndex,-1,"Miss„o nova, v· la em Devias, fale com a Nakine")
-			MessageSend(bIndex,0,0,string.format("Por aqui nada de novo, por enquanto vocÍ pode ir a Proxima Miss„o."))
+	elseif NPCQuest1 == NPC and Lista >= 3 and Dialogo1 == 1 then ChatTargetSend(aIndex,-1,"Miss√£o nova, v√° la em Devias, fale com a Nakine")
+			MessageSend(bIndex,0,0,string.format("Por aqui nada de novo, por enquanto voc√™ pode ir a Proxima Miss√£o."))
 				NoticeSend(bIndex,1,("Encontre Nakine em Devias")) 
 					SQLQuery("UPDATE "..BD.." SET Dialogo= 0 WHERE Name= '"..Name.."'");
 						SQLFetch();
 							SQLClose();
 
 end
---Miss„o 2 
+--Miss√£o 2 
  if NPCQuest2 == NPC and Lista == 3 then
-		MessageSend(bIndex,0,0,string.format("Ol· "..Name..", "..MessageGet(825)..""))
+		MessageSend(bIndex,0,0,string.format("Ol√° "..Name..", "..MessageGet(825)..""))
 			SQLQuery("UPDATE "..BD.." SET "..Quest.."= 4, "..Mob.."="..MOBKill02..", "..MobKill.."= 0 WHERE Name= '"..Name.."'");
 				SQLFetch();
 					SQLClose();
 					
 	elseif NPCQuest2 == NPC and Lista == 4 and Kill1 <= COUNTKILL2 then
-			MessageSend(bIndex,0,0,("Huuum... Ainda falta vocÍ matar alguns Elite Yeti, atÈ agora foram "..Kill1..""))
+			MessageSend(bIndex,0,0,("Huuum... Ainda falta voc√™ matar alguns Elite Yeti, at√© agora foram "..Kill1..""))
 		
 	elseif NPCQuest2 == NPC and Lista == 4 and Kill1 >= COUNTKILL2 then
-			MessageSend(bIndex,0,0,string.format("Ainda bem que vocÍ apareceu por aqui. Agora estamos mais despreocupados! Tome, vem comemorar!!"))
+			MessageSend(bIndex,0,0,string.format("Ainda bem que voc√™ apareceu por aqui. Agora estamos mais despreocupados! Tome, vem comemorar!!"))
 				SQLQuery("UPDATE "..BD.." SET quest1= 5, "..Mob.."="..MOBKill03..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
 					SQLQuery("UPDATE "..TablePcPoint.." SET "..ColumnPcPoint.."= "..ColumnPcPoint.."+"..RewardPcPoint.." WHERE "..PlayerPcPoint.."= '"..Conta.."'") --// Pagar via WCoin
 						SQLFetch()
@@ -178,22 +178,22 @@ end
 								ItemGiveEx(bIndex, RewardItemIndex2,0,0,0,0,0,0)
 								ItemGiveEx(bIndex, 7181,0,0,0,0,0,0)
 								
-									NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu "..(RewardCoin2).." "..(RewardColumnCoin).."!!"))
+									NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu "..(RewardCoin2).." "..(RewardColumnCoin).."!!"))
 	
 	elseif NPCQuest2 == NPC and Lista >= 5 then
-			MessageSend(bIndex,0,0,string.format("Obrigada a nÛs ajudar, agora aquele Castelo est· mais seguro. Procure pela Leilani em Noria."))
+			MessageSend(bIndex,0,0,string.format("Obrigada a n√≥s ajudar, agora aquele Castelo est√° mais seguro. Procure pela Leilani em Noria."))
 		
 end
---Miss„o 3
+--Miss√£o 3
  if NPCQuest3 == NPC and Lista == 5 then
 		SQLQuery("UPDATE "..BD.." SET "..Quest.."= 6, "..Mob.."="..MOBKill03..", "..MobKill.."= 0 WHERE Name= '"..Name.."'");
 			SQLFetch()
 				SQLClose()
-					MessageSend(bIndex,0,0,string.format("Ol·, ouvi dizer que minha irm„ Nakine mandou vocÍ, disse ser o maior Guerreiro desse continente. Mate 150 Forest Monster. "))
+					MessageSend(bIndex,0,0,string.format("Ol√°, ouvi dizer que minha irm√£ Nakine mandou voc√™, disse ser o maior Guerreiro desse continente. Mate 150 Forest Monster. "))
 						NoticeSend(bIndex,1, ("Leilani pediu para matar 150 de Forest Monster"))
 	
 	elseif NPCQuest3 == NPC and Lista == 6 and Kill1 <= COUNTKILL3 then
-			MessageSend(bIndex,0,0, string.format("Conseguiu ?? Quantos Monstros vocÍ conseguiu matar ? "..(Kill1).." Forest. Por favor, volte quando conseguir matar 150."))
+			MessageSend(bIndex,0,0, string.format("Conseguiu ?? Quantos Monstros voc√™ conseguiu matar ? "..(Kill1).." Forest. Por favor, volte quando conseguir matar 150."))
 	  
 	elseif NPCQuest3 == NPC and Lista == 6 and Kill1 >= COUNTKILL3 then
 			MessageSend(bIndex,0,0,string.format("Sua jornada continua em outro lugar, volte para MAP, fale com a NPC "))
@@ -203,19 +203,19 @@ end
 							SQLClose()
 								ItemGiveEx(bIndex, 7182,0,0,0,0,0,0)
 
-								NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu "..(RewardCoin3).." "..(RewardColumnCoin).."!!"))
+								NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu "..(RewardCoin3).." "..(RewardColumnCoin).."!!"))
 
-	elseif NPCQuest3 == NPC and Lista >= 7 then ChatTargetSend(aIndex,-1,""..Name.." VocÍ fez oque muitos n„o conseguiram, defendeu nossa cidade. ")
-			MessageSend(bIndex,0,0,string.format("Noria continua livre desses monstros, vocÍ "..Name..", ser· bem lembrado desse feito."))
+	elseif NPCQuest3 == NPC and Lista >= 7 then ChatTargetSend(aIndex,-1,""..Name.." Voc√™ fez oque muitos n√£o conseguiram, defendeu nossa cidade. ")
+			MessageSend(bIndex,0,0,string.format("Noria continua livre desses monstros, voc√™ "..Name..", ser√° bem lembrado desse feito."))
 				NoticeSend(bIndex,1,("Encontre Emily em Atlans")) 	  
 	
 end
---Miss„o 4
+--Miss√£o 4
  if NPCQuest4 == NPC and Lista == 7 then
 		SQLQuery("UPDATE "..BD.." SET "..Quest.."= 8, "..Mob.."="..MOBKill04..", "..MobKill.."= 0 WHERE Name= '"..Name.."'");
 			SQLFetch()
 				SQLClose()
-					MessageSend(bIndex,0,0,string.format("Nas profundezas de Atlans est· repleta de Monstros. Encontre Lizard King."))
+					MessageSend(bIndex,0,0,string.format("Nas profundezas de Atlans est√° repleta de Monstros. Encontre Lizard King."))
 						NoticeSend(bIndex,1, ("Mate 170 Lizard King"))
 						
 	elseif NPCQuest4 == NPC and Lista == 8 and Kill1 <= COUNTKILL4 then
@@ -228,23 +228,23 @@ end
 						SQLFetch()
 							SQLClose()
 								ItemGiveEx(bIndex, 7183,0,0,0,0,0,0)
-									NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu "..(RewardCoin4).." "..(RewardColumnCoin).."!!"))
+									NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu "..(RewardCoin4).." "..(RewardColumnCoin).."!!"))
 
-	elseif NPCQuest4 == NPC and Lista >= 9 then ChatTargetSend(aIndex,-1,""..Name..". Este nome n„o ser· esquecido.")
-			MessageSend(bIndex,0,0,string.format("Por enquanto n„o precisamos mais da sua ajuda. Obrigada!"))
-				NoticeSend(bIndex,1,("Encontre Mulher P·ssaro em Õcarus")) 	  
+	elseif NPCQuest4 == NPC and Lista >= 9 then ChatTargetSend(aIndex,-1,""..Name..". Este nome n√£o ser√° esquecido.")
+			MessageSend(bIndex,0,0,string.format("Por enquanto n√£o precisamos mais da sua ajuda. Obrigada!"))
+				NoticeSend(bIndex,1,("Encontre Mulher P√°ssaro em √çcarus")) 	  
 	
 end
---Miss„o 5
+--Miss√£o 5
  if NPCQuest5 == NPC and Lista == 9 then
 		SQLQuery("UPDATE "..BD.." SET "..Quest.."= 910, "..Mob.."="..MOBKill05..", "..MobKill.."= 0 WHERE Name= '"..Name.."'");
 			SQLFetch()
 				SQLClose()
-					MessageSend(bIndex,0,0,string.format("Que tal vocÍ ter maior chance de ganhar Feather e Crest? Mate 200 Phantom no limite de Õcarus."))
-						NoticeSend(bIndex,1, ("Melher P·ssaro lhe pediu para matar 200 Phantom."))
+					MessageSend(bIndex,0,0,string.format("Que tal voc√™ ter maior chance de ganhar Feather e Crest? Mate 200 Phantom no limite de √çcarus."))
+						NoticeSend(bIndex,1, ("Melher P√°ssaro lhe pediu para matar 200 Phantom."))
 	
 	elseif NPCQuest5 == NPC and Lista == 10 and Kill1 <= COUNTKILL5 then
-	  MessageSend(bIndex,0,0, string.format("Est· quase la, preciso de 200 mortes, foram atÈ agora "..(Kill1).." Phantom"))
+	  MessageSend(bIndex,0,0, string.format("Est√° quase la, preciso de 200 mortes, foram at√© agora "..(Kill1).." Phantom"))
 	  
 	elseif	NPCQuest5 == NPC and Lista == 10 and Kill1 >= COUNTKILL5 and Radom <= Rate1 then
 		  MessageSend(bIndex,0,0,string.format("Muito bem, espero que este item seja o que procurava, caso queira repetir, volte em breve."))
@@ -289,7 +289,7 @@ end
 					SQLFetch()
 						SQLClose()
 							ItemGiveEx(bIndex, 7182,0,0,0,0,0,0)
-								NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu "..(RewardCoin5).." "..(RewardColumnCoin).."!!"))
+								NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu "..(RewardCoin5).." "..(RewardColumnCoin).."!!"))
 									NoticeSend(bIndex,1,(""..Radom.."")) --console.log 	  
 	
 	elseif	NPCQuest5 == NPC and Lista == 10 and Kill1 >= COUNTKILL5 and Radom <= Rate6 then
@@ -299,7 +299,7 @@ end
 					SQLFetch()
 						SQLClose()
 							ItemGiveEx(bIndex, 6159,0,0,0,0,0,0)
-								NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu "..(RewardCoin5).." "..(RewardColumnCoin).."!!"))
+								NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu "..(RewardCoin5).." "..(RewardColumnCoin).."!!"))
 									NoticeSend(bIndex,1,(""..Radom.."")) 	--console.log   
 	
 	elseif	NPCQuest5 == NPC and Lista == 10 and Kill1 >= COUNTKILL5 and Radom <= Rate7 then
@@ -309,17 +309,17 @@ end
 					SQLFetch()
 						SQLClose()
 							ItemGiveEx(bIndex, 7199,0,0,0,0,0,0)
-								NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu "..(RewardCoin5).." "..(RewardColumnCoin).."!!"))
+								NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu "..(RewardCoin5).." "..(RewardColumnCoin).."!!"))
 									NoticeSend(bIndex,1,(""..Radom.."")) 	 --console.log 
 	
 
-	elseif NPCQuest5 == NPC and Lista >= 11 then ChatTargetSend(aIndex,-1,""..Name.." VocÍ mostrou sua forÁa, volte em breve!")
-	  MessageSend(bIndex,0,0,string.format("No momento n„o tenho algo para vocÍ, procure por Gebe."))
+	elseif NPCQuest5 == NPC and Lista >= 11 then ChatTargetSend(aIndex,-1,""..Name.." Voc√™ mostrou sua for√ßa, volte em breve!")
+	  MessageSend(bIndex,0,0,string.format("No momento n√£o tenho algo para voc√™, procure por Gebe."))
 		NoticeSend(bIndex,1,("Encontre Gebe em Tarkan")) 	  
 	
 	
 end
---Miss„o 6
+--Miss√£o 6
  if NPCQuest6 == NPC and Lista == 11 then
 		SQLQuery("UPDATE "..BD.." SET "..Quest.."= 12, "..Mob.."="..MOBKill06..", "..MobKill.."= 0 WHERE Name= '"..Name.."'");
 			SQLFetch()
@@ -328,7 +328,7 @@ end
 						NoticeSend(bIndex,1, ("Gebe lhe pediu para matar 20 Anubis"))
 						
 	elseif NPCQuest6 == NPC and Lista == 12 and Kill1 <= COUNTKILL6 then
-				MessageSend(bIndex,0,0, string.format("Anubis sÛ aparece em determinado hor·rio! Foram encontrados "..(Kill1).." Anubis de 20."))
+				MessageSend(bIndex,0,0, string.format("Anubis s√≥ aparece em determinado hor√°rio! Foram encontrados "..(Kill1).." Anubis de 20."))
 	  
 	elseif NPCQuest6 == NPC and Lista == 12 and Kill1 >= COUNTKILL6 then
 				MessageSend(bIndex,0,0,string.format("Muitos monstros aqui em Tarkan deixam cair Caixas de Kundum. Leve essa, e quando anunciado, volte para mais."))
@@ -337,26 +337,26 @@ end
 							SQLFetch()
 								SQLClose()
 									ItemGiveEx(bIndex, 7179,12,0,0,0,0,0)
-									NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu "..(RewardCoin6).." "..(RewardColumnCoin).."!!"))
+									NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu "..(RewardCoin6).." "..(RewardColumnCoin).."!!"))
 
 	elseif NPCQuest6 == NPC and Lista >= 13 then ChatTargetSend(aIndex,-1,""..Name..", Tarkan pode oferecer muitas possibilidades.")
-			MessageSend(bIndex,0,0,string.format("Volte quando houver InvaÁ„o de Dourados, assim vocÍ consegue mais Caixas."))
+			MessageSend(bIndex,0,0,string.format("Volte quando houver Inva√ß√£o de Dourados, assim voc√™ consegue mais Caixas."))
 				NoticeSend(bIndex,1,("Nova Quest Liberada em Kanturun 3.")) 	  
 	
 end
---Miss„o 7
+--Miss√£o 7
  if NPCQuest7 == NPC and Lista == 13 then
 		SQLQuery("UPDATE "..BD.." SET "..Quest.."= 14, "..Mob.."="..MOBKill07..", "..MobKill.."= 0 WHERE Name= '"..Name.."'");
 			SQLFetch()
 				SQLClose()
-					MessageSend(bIndex,0,0,string.format("Neste mapa existe uma maquina que est· fora de controle, aos poucos migrando seu dominio ao continente. Mate 360 Dreadfear"))
+					MessageSend(bIndex,0,0,string.format("Neste mapa existe uma maquina que est√° fora de controle, aos poucos migrando seu dominio ao continente. Mate 360 Dreadfear"))
 						NoticeSend(bIndex,1, ("River Ward lhe pediu para matar 360 Dreadfear"))
 						
 	elseif NPCQuest7 == NPC and Lista == 14 and Kill1 <= COUNTKILL7 then
-			MessageSend(bIndex,0,0, string.format("O seu esforÁo est· sendo reconhecido, vocÍ j· matou "..(Kill1).." Dreadfear"))
+			MessageSend(bIndex,0,0, string.format("O seu esfor√ßo est√° sendo reconhecido, voc√™ j√° matou "..(Kill1).." Dreadfear"))
 	  
 	elseif NPCQuest7 == NPC and Lista == 14 and Kill1 >= COUNTKILL7 then
-			MessageSend(bIndex,0,0,string.format("Agora que vocÍ conseguiu superar e encontrou o Anel para acessar a Maquina, leve com vocÍ 10 GenStone para Refinaria."))
+			MessageSend(bIndex,0,0,string.format("Agora que voc√™ conseguiu superar e encontrou o Anel para acessar a Maquina, leve com voc√™ 10 GenStone para Refinaria."))
 				SQLQuery("UPDATE "..BD.." SET quest1= 15, "..Mob.."="..MOBKill08..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
 					SQLQuery("UPDATE "..TableCoin.." SET "..RewardColumnCoin.."= "..RewardColumnCoin.."+"..RewardCoin7.." WHERE "..PlayerCoin.."= '"..Conta.."'") --// Pagar via WCoin
 						SQLFetch()
@@ -365,50 +365,50 @@ end
 								ItemGiveEx(bIndex, 7209,0,0,0,0,0,0)
 								ItemGiveEx(bIndex, 7209,0,0,0,0,0,0)
 								
-								NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu "..(RewardCoin7).." "..(RewardColumnCoin).."!!"))
+								NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu "..(RewardCoin7).." "..(RewardColumnCoin).."!!"))
 
 	elseif NPCQuest7 == NPC and Lista >= 15 then ChatTargetSend(aIndex,-1,"Aproveite bem as GenStones.")
-			MessageSend(bIndex,0,0,string.format("J· est· concluido sua jornada por aqui, continue guardando GenStone e ir a refinaria conseguir extrair Harmony."))
+			MessageSend(bIndex,0,0,string.format("J√° est√° concluido sua jornada por aqui, continue guardando GenStone e ir a refinaria conseguir extrair Harmony."))
 				NoticeSend(bIndex,1,("Encontre Mago Supremo em Aida2")) 	  
 	
 	end
---Miss„o 8
+--Miss√£o 8
  if NPCQuest8 == NPC and Lista == 15 then
 		SQLQuery("UPDATE "..BD.." SET "..Quest.."= 16, "..Mob.."="..MOBKill08..", "..MobKill.."= 0 WHERE Name= '"..Name.."'");
 			SQLFetch()
 				SQLClose()
-					MessageSend(bIndex,0,0,string.format("Por tanto tempo n„o tivemos algo t„o horrivel, n„o do conta de matar o HellMaine tantas vezes. Encontre e Mate 20 vezes"))
+					MessageSend(bIndex,0,0,string.format("Por tanto tempo n√£o tivemos algo t√£o horrivel, n√£o do conta de matar o HellMaine tantas vezes. Encontre e Mate 20 vezes"))
 						NoticeSend(bIndex,1, ("Mago Supremo lhe pediu para matar 20 HellMaine"))
 						
 	elseif NPCQuest8 == NPC and Lista == 16 and Kill1 <= COUNTKILL8 then
-				MessageSend(bIndex,0,0, string.format("Sei que ele demora para aparecer, mas tenha paciÍncia. Foi morto "..(Kill1).." HellMaine"))
+				MessageSend(bIndex,0,0, string.format("Sei que ele demora para aparecer, mas tenha paci√™ncia. Foi morto "..(Kill1).." HellMaine"))
 	  
 	elseif NPCQuest8 == NPC and Lista == 16 and Kill1 >= COUNTKILL8 then
-				MessageSend(bIndex,0,0,string.format(""..Name.." Obrigado por matar o HellMaine, ele continuar· voltando, entretanto n„o precisa mais derrota-lo."))
+				MessageSend(bIndex,0,0,string.format(""..Name.." Obrigado por matar o HellMaine, ele continuar√° voltando, entretanto n√£o precisa mais derrota-lo."))
 					SQLQuery("UPDATE "..BD.." SET quest1= 17, "..Mob.."="..MOBKill09..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
 						SQLQuery("UPDATE "..TableCoin.." SET "..RewardColumnCoin.."= "..RewardColumnCoin.."+"..RewardCoin8.." WHERE "..PlayerCoin.."= '"..Conta.."'") --// Pagar via WCoin
 							SQLFetch()
 								SQLClose()
-									NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu "..(RewardCoin8).." "..(RewardColumnCoin).."!!"))
+									NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu "..(RewardCoin8).." "..(RewardColumnCoin).."!!"))
 
-	elseif NPCQuest8 == NPC and Lista >= 17 then ChatTargetSend(aIndex,-1,""..Name..", vocÍ j· o matou muitas vezes.")
-				MessageSend(bIndex,0,0,string.format(""..Name..", Deixe que outro Guerreiro possa me mostrar a forÁa que tem, no momento vocÍ pode ir para Crywolf."))
+	elseif NPCQuest8 == NPC and Lista >= 17 then ChatTargetSend(aIndex,-1,""..Name..", voc√™ j√° o matou muitas vezes.")
+				MessageSend(bIndex,0,0,string.format(""..Name..", Deixe que outro Guerreiro possa me mostrar a for√ßa que tem, no momento voc√™ pode ir para Crywolf."))
 					NoticeSend(bIndex,1,("Encontre Skull of Defender em CryWolf")) 	  
 	
 end
---Miss„o 9
+--Miss√£o 9
  if NPCQuest9 == NPC and Lista == 17 then
 
  	SQLQuery("UPDATE "..BD.." SET "..Quest.."= 18, "..Mob.."="..MOBKill09..", "..MobKill.."= 0 WHERE Name= '"..Name.."'");
 
   SQLFetch()
   SQLClose()
-	MessageSend(bIndex,0,0,string.format("Ent„o vocÍ passou pela prova do Mago, bem ent„o, tenho um desafio com uma recompenÁa muito boa. Mate 250 Werewolf(Hero)!"))
+	MessageSend(bIndex,0,0,string.format("Ent√£o voc√™ passou pela prova do Mago, bem ent√£o, tenho um desafio com uma recompen√ßa muito boa. Mate 250 Werewolf(Hero)!"))
 	NoticeSend(bIndex,1, ("Skull lhe pediu para matar 250 Werewolf(Hero)"))
 	elseif NPCQuest9 == NPC and Lista == 18 and Kill1 <= COUNTKILL9 then
-	  MessageSend(bIndex,0,0, string.format("Huuum, deixa me ver, vocÍ conseguiu matar "..(Kill1).." Werewolf(Hero), ainda faltam "..(COUNTKILL9-Kill1).."."))
+	  MessageSend(bIndex,0,0, string.format("Huuum, deixa me ver, voc√™ conseguiu matar "..(Kill1).." Werewolf(Hero), ainda faltam "..(COUNTKILL9-Kill1).."."))
 	elseif NPCQuest9 == NPC and Lista == 18 and Kill1 >= COUNTKILL9 then
-	  MessageSend(bIndex,0,0,string.format("Miss„o concluida!! Vou lhe dar um item aleatÛrio com alguns sendo bem valiosos."))
+	  MessageSend(bIndex,0,0,string.format("Miss√£o concluida!! Vou lhe dar um item aleat√≥rio com alguns sendo bem valiosos."))
        SQLQuery("UPDATE "..BD.." SET quest1= 19, "..Mob.."="..MOBKill10..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
   	   SQLFetch()
 	   SQLClose()
@@ -416,26 +416,26 @@ end
 		SQLQuery("UPDATE "..TableCoin.." SET "..RewardColumnCoin.."= "..RewardColumnCoin.."+"..RewardCoin9.." WHERE "..PlayerCoin.."= '"..Conta.."'") --// Pagar via WCoin
 		SQLFetch()
 		SQLClose()
-			NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu "..(RewardCoin9).." "..(RewardColumnCoin).."!!"))
+			NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu "..(RewardCoin9).." "..(RewardColumnCoin).."!!"))
 
 	elseif NPCQuest9 == NPC and Lista >= 19 then ChatTargetSend(aIndex,-1,""..Name.." Obrigado pelo apoio.")
 	  MessageSend(bIndex,0,0,string.format("Obrigado pela ajuda. O item que recebeu, use com sabedoria no mercado ou pessoal."))
    --   NoticeSend(bIndex,1,("Encontre Nakine em Devias")) 	  
 	
 	end
---Miss„o 10
+--Miss√£o 10
  if NPCQuest10 == NPC and Lista == 19 then
 
  
 	SQLQuery("UPDATE "..BD.." SET "..Quest.."= 20, "..Mob.."="..MOBKill10..", "..MobKill.."= 0 WHERE Name= '"..Name.."'");
   SQLFetch()
   SQLClose()
-	MessageSend(bIndex,0,0,string.format("Ol· Cidad„o, que bom ver vocÍ agora, precisamos de sua ajuda, mate aquelas aranhas na saida de lorencia e lhe darei algum item!"))
+	MessageSend(bIndex,0,0,string.format("Ol√° Cidad√£o, que bom ver voc√™ agora, precisamos de sua ajuda, mate aquelas aranhas na saida de lorencia e lhe darei algum item!"))
 	NoticeSend(bIndex,1, ("Kailene lhe pediu para matar 30 aranhas"))
 	elseif NPCQuest10 == NPC and Lista == 20 and Kill1 <= COUNTKILL10 then
-	  MessageSend(bIndex,0,0, string.format("Oi novamente, fiquei sabendo que vocÍ j· conseguiu matar "..(Kill1).." aranhas"))
+	  MessageSend(bIndex,0,0, string.format("Oi novamente, fiquei sabendo que voc√™ j√° conseguiu matar "..(Kill1).." aranhas"))
 	elseif NPCQuest10 == NPC and Lista == 20 and Kill1 >= COUNTKILL10 then
-	  MessageSend(bIndex,0,0,string.format("Obrigada pela sua ajuda! H· mais residentes precisando da sua ajuda, encontre a filha da puta da minha irm„ em Devias"))
+	  MessageSend(bIndex,0,0,string.format("Obrigada pela sua ajuda! H√° mais residentes precisando da sua ajuda, encontre a filha da puta da minha irm√£ em Devias"))
        SQLQuery("UPDATE "..BD.." SET quest1= 21, "..Mob.."="..MOBKill10..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
   	   SQLFetch()
 	   SQLClose()
@@ -443,10 +443,10 @@ end
 		SQLQuery("UPDATE "..TableCoin.." SET "..RewardColumnCoin.."= "..RewardColumnCoin.."+"..RewardCoin10.." WHERE "..PlayerCoin.."= '"..Conta.."'") --// Pagar via WCoin
 		SQLFetch()
 		SQLClose()
-			NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu "..(RewardCoin10).." "..(RewardColumnCoin).."!!"))
+			NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu "..(RewardCoin10).." "..(RewardColumnCoin).."!!"))
 
 	elseif NPCQuest10 == NPC and Lista >= 21 then ChatTargetSend(aIndex,-1,""..Name.." Obrigada, espero que seja util este item que entreguei")
-	  MessageSend(bIndex,0,0,string.format("VocÍ ja me ajudou contra aquelas aranhas terrÌveis, em Devias precisa de vocÍ"))
+	  MessageSend(bIndex,0,0,string.format("Voc√™ ja me ajudou contra aquelas aranhas terr√≠veis, em Devias precisa de voc√™"))
       NoticeSend(bIndex,1,("Encontre Nakine em Devias")) 	  
 	
 	end
@@ -467,49 +467,49 @@ if RewardType == 2 then
   SQLQuery("UPDATE "..BD.." SET "..MobKill.." = 0 WHERE Name= '"..Name.."'") 
   SQLFetch()
   SQLClose()
-	MessageSend(bIndex,0,0,string.format("Ol· Cidad„o, que bom ver vocÍ agora, precisamos de sua ajuda, mate aquelas aranhas na saida de lorencia e lhe darei algum item!"))
+	MessageSend(bIndex,0,0,string.format("Ol√° Cidad√£o, que bom ver voc√™ agora, precisamos de sua ajuda, mate aquelas aranhas na saida de lorencia e lhe darei algum item!"))
 	NoticeSend(bIndex,1, ("Kailene lhe pediu para matar 30 aranhas"))
 	
 	elseif NPCQuest1 == NPC and Lista == 1 and Kill1 <= COUNTKILL1 then
-	  MessageSend(bIndex,0,0, string.format("Oi novamente, fiquei sabendo que vocÍ j· conseguiu matar "..(Kill1).." aranhas"))
+	  MessageSend(bIndex,0,0, string.format("Oi novamente, fiquei sabendo que voc√™ j√° conseguiu matar "..(Kill1).." aranhas"))
 	  
 	elseif NPCQuest1 == NPC and Lista == 1 and Kill1 >= 30 then
-	  MessageSend(bIndex,0,0,string.format("Obrigada pela sua ajuda! H· mais residentes precisando da sua ajuda, encontre a filha da puta da minha irm„ em Devias"))
+	  MessageSend(bIndex,0,0,string.format("Obrigada pela sua ajuda! H√° mais residentes precisando da sua ajuda, encontre a filha da puta da minha irm√£ em Devias"))
        SQLQuery("UPDATE "..BD.." SET quest1= 2, "..Mob.."="..MOBKill01..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
   	   SQLFetch()
 	   SQLClose()
 			ItemGiveEx(bIndex, RewardItemIndex,RewardLevel,0,0,0,0,0)
-			NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu Item no invent·rio !!"))
+			NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu Item no invent√°rio !!"))
 
 	elseif NPCQuest1 == NPC and Lista >= 2 then ChatTargetSend(aIndex,-1,""..Name.." Obrigada, espero que seja util este item que entreguei")
-	  MessageSend(bIndex,0,0,string.format("VocÍ ja me ajudou contra aquelas aranhas terrÌveis, em Devias precisa de vocÍ"))
+	  MessageSend(bIndex,0,0,string.format("Voc√™ ja me ajudou contra aquelas aranhas terr√≠veis, em Devias precisa de voc√™"))
       NoticeSend(bIndex,1,("Encontre Nakine em Devias")) 	  
 	
 	end
 	 
 
 	   
-	--Segunda Miss„o, Quest 2 
+	--Segunda Miss√£o, Quest 2 
 if NPCQuest2 == NPC and Lista == 2 then
- MessageSend(bIndex,0,0,string.format("Ol· "..Name..", "..MessageGet(825)..""))
+ MessageSend(bIndex,0,0,string.format("Ol√° "..Name..", "..MessageGet(825)..""))
 	SQLQuery("UPDATE "..BD.." SET "..Quest.."= 3, "..Mob.."="..MOBKill01..", "..MobKill.."= 0 WHERE Name= '"..Name.."'");
 	SQLFetch();
 	SQLClose();
 	
 	elseif NPCQuest2 == NPC and Lista == 3 and Kill1 <= 129 then
-		MessageSend(bIndex,0,0,("Huuum... Ainda falta vocÍ matar alguns Elite Yeti, atÈ agora foram "..Kill1..""))
+		MessageSend(bIndex,0,0,("Huuum... Ainda falta voc√™ matar alguns Elite Yeti, at√© agora foram "..Kill1..""))
 		
 	elseif NPCQuest2 == NPC and Lista == 3 and Kill1 >= 130 then
-		MessageSend(bIndex,0,0,string.format("Ainda bem que vocÍ apareceu por aqui. Agora estamos todo mais despreocupados! Tome, vem comemorar!!"))
+		MessageSend(bIndex,0,0,string.format("Ainda bem que voc√™ apareceu por aqui. Agora estamos todo mais despreocupados! Tome, vem comemorar!!"))
 		SQLQuery("UPDATE "..BD.." SET quest1= 4, "..Mob.."="..MOBKill02..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
 		SQLFetch()
 		SQLClose()
 			ItemGiveEx(bIndex, RewardItemIndex2,RewardLevel2,0,0,0,0,0)
 
-			NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu Item no seu invent·rio!!"))
+			NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu Item no seu invent√°rio!!"))
 	
 	elseif NPCQuest2 == NPC and Lista == 4 then
-		MessageSend(bIndex,0,0,string.format("Obrigada a nÛs ajudar, agora aquele Castelo est· mais seguro. Procure pelo TESTE DE NOME em Lorencia."))
+		MessageSend(bIndex,0,0,string.format("Obrigada a n√≥s ajudar, agora aquele Castelo est√° mais seguro. Procure pelo TESTE DE NOME em Lorencia."))
 		
 end
 
@@ -526,51 +526,51 @@ if RewardType == 3 then
   SQLQuery("UPDATE "..BD.." SET "..MobKill.." = 0 WHERE Name= '"..Name.."'") 
   SQLFetch()
   SQLClose()
-	MessageSend(bIndex,0,0,string.format("Ol· Cidad„o, que bom ver vocÍ agora, precisamos de sua ajuda, mate aquelas aranhas na saida de lorencia e lhe darei algum item!"))
+	MessageSend(bIndex,0,0,string.format("Ol√° Cidad√£o, que bom ver voc√™ agora, precisamos de sua ajuda, mate aquelas aranhas na saida de lorencia e lhe darei algum item!"))
 	NoticeSend(bIndex,1, ("Kailene lhe pediu para matar 30 aranhas"))
 	
 	elseif NPCQuest1 == NPC and Lista == 1 and Kill1 <= COUNTKILL1 then
-	  MessageSend(bIndex,0,0, string.format("Oi novamente, fiquei sabendo que vocÍ j· conseguiu matar "..(Kill1).." aranhas"))
+	  MessageSend(bIndex,0,0, string.format("Oi novamente, fiquei sabendo que voc√™ j√° conseguiu matar "..(Kill1).." aranhas"))
 	  
 	elseif NPCQuest1 == NPC and Lista == 1 and Kill1 >= 30 then
-	  MessageSend(bIndex,0,0,string.format("Obrigada pela sua ajuda! H· mais residentes precisando da sua ajuda, encontre a filha da puta da minha irm„ em Devias"))
+	  MessageSend(bIndex,0,0,string.format("Obrigada pela sua ajuda! H√° mais residentes precisando da sua ajuda, encontre a filha da puta da minha irm√£ em Devias"))
 		SQLQuery("UPDATE "..BD.." SET quest1= 2, "..Mob.."="..MOBKill01..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
 		SQLQuery("UPDATE "..TableCoin.." SET "..RewardColumnCoin.."= "..RewardColumnCoin.."+"..RewardCoin.." WHERE "..PlayerCoin.."= '"..Conta.."'") --// Pagar via WCoin
   	    SQLFetch()
 	    SQLClose()
 			ItemGiveEx(bIndex, RewardItemIndex,RewardLevel,0,0,0,0,0)
-			NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu Item e "..RewardCoin.." de WCoin !!"))
+			NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu Item e "..RewardCoin.." de WCoin !!"))
 
 	elseif NPCQuest1 == NPC and Lista >= 2 then ChatTargetSend(aIndex,-1,""..Name.." Obrigada, espero que seja util este item que entreguei")
-	  MessageSend(bIndex,0,0,string.format("VocÍ ja me ajudou contra aquelas aranhas terrÌveis, em Devias precisa de vocÍ"))
+	  MessageSend(bIndex,0,0,string.format("Voc√™ ja me ajudou contra aquelas aranhas terr√≠veis, em Devias precisa de voc√™"))
       NoticeSend(bIndex,1,("Encontre Nakine em Devias")) 	  
 	
 	end
 	 
 
 	   
-	--Segunda Miss„o, Quest 2 
+	--Segunda Miss√£o, Quest 2 
 if NPCQuest2 == NPC and Lista == 2 then
- MessageSend(bIndex,0,0,string.format("Ol· "..Name..", "..MessageGet(825)..""))
+ MessageSend(bIndex,0,0,string.format("Ol√° "..Name..", "..MessageGet(825)..""))
 	SQLQuery("UPDATE "..BD.." SET "..Quest.."= 3, "..Mob.."="..MOBKill01..", "..MobKill.."= 0 WHERE Name= '"..Name.."'");
 	SQLFetch();
 	SQLClose();
 	
 	elseif NPCQuest2 == NPC and Lista == 3 and Kill1 <= 129 then
-		MessageSend(bIndex,0,0,("Huuum... Ainda falta vocÍ matar alguns Elite Yeti, atÈ agora foram "..Kill1..""))
+		MessageSend(bIndex,0,0,("Huuum... Ainda falta voc√™ matar alguns Elite Yeti, at√© agora foram "..Kill1..""))
 		
 	elseif NPCQuest2 == NPC and Lista == 3 and Kill1 >= 130 then
-		MessageSend(bIndex,0,0,string.format("Ainda bem que vocÍ apareceu por aqui. Agora estamos todo mais despreocupados! Tome, vem comemorar!!"))
+		MessageSend(bIndex,0,0,string.format("Ainda bem que voc√™ apareceu por aqui. Agora estamos todo mais despreocupados! Tome, vem comemorar!!"))
 		SQLQuery("UPDATE "..BD.." SET quest1= 4, "..Mob.."="..MOBKill02..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
 		SQLQuery("UPDATE "..TableCoin.." SET "..RewardColumnCoin.."= "..RewardColumnCoin.."+"..RewardCoin2.." WHERE "..PlayerCoin.."= '"..Conta.."'") --// Pagar via WCoin
 		SQLFetch()
 		SQLClose()
 			ItemGiveEx(bIndex, RewardItemIndex2,RewardLevel2,0,0,0,0,0)
 
-			NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu Item e "..RewardCoin2.." de WCoin!!"))
+			NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu Item e "..RewardCoin2.." de WCoin!!"))
 	
 	elseif NPCQuest2 == NPC and Lista == 4 then
-		MessageSend(bIndex,0,0,string.format("Obrigada a nÛs ajudar, agora aquele Castelo est· mais seguro. Procure pelo TESTE DE NOME em Lorencia."))
+		MessageSend(bIndex,0,0,string.format("Obrigada a n√≥s ajudar, agora aquele Castelo est√° mais seguro. Procure pelo TESTE DE NOME em Lorencia."))
 		
 end
 
@@ -587,49 +587,49 @@ if RewardType == 4 then
   SQLQuery("UPDATE "..BD.." SET "..MobKill.." = 0 WHERE Name= '"..Name.."'") 
   SQLFetch()
   SQLClose()
-	MessageSend(bIndex,0,0,string.format("Ol· Cidad„o, que bom ver vocÍ agora, precisamos de sua ajuda, mate aquelas aranhas na saida de lorencia e lhe darei algum item!"))
+	MessageSend(bIndex,0,0,string.format("Ol√° Cidad√£o, que bom ver voc√™ agora, precisamos de sua ajuda, mate aquelas aranhas na saida de lorencia e lhe darei algum item!"))
 	NoticeSend(bIndex,1, ("Kailene lhe pediu para matar 30 aranhas"))
 	
 	elseif NPCQuest1 == NPC and Lista == 1 and Kill1 <= COUNTKILL1 then
-	  MessageSend(bIndex,0,0, string.format("Oi novamente, fiquei sabendo que vocÍ j· conseguiu matar "..(Kill1).." aranhas"))
+	  MessageSend(bIndex,0,0, string.format("Oi novamente, fiquei sabendo que voc√™ j√° conseguiu matar "..(Kill1).." aranhas"))
 	  
 	elseif NPCQuest1 == NPC and Lista == 1 and Kill1 >= 30 then
-	  MessageSend(bIndex,0,0,string.format("Obrigada pela sua ajuda! H· mais residentes precisando da sua ajuda, encontre a filha da puta da minha irm„ em Devias"))
+	  MessageSend(bIndex,0,0,string.format("Obrigada pela sua ajuda! H√° mais residentes precisando da sua ajuda, encontre a filha da puta da minha irm√£ em Devias"))
 		SQLQuery("UPDATE "..BD.." SET quest1= 2, "..Mob.."="..MOBKill01..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
 		SQLQuery("UPDATE "..TablePcPoint.." SET "..ColumnPcPoint.."= "..ColumnPcPoint.."+"..RewardPcPoint.." WHERE "..PlayerPcPoint.."= '"..Conta.."'") --// Pagar via WCoin
   	    SQLFetch()
 	    SQLClose()
-			NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu "..RewardPcPoint.." de PcPoint !!"))
+			NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu "..RewardPcPoint.." de PcPoint !!"))
 
 	elseif NPCQuest1 == NPC and Lista >= 2 then ChatTargetSend(aIndex,-1,""..Name.." Obrigada, espero que seja util este item que entreguei")
-	  MessageSend(bIndex,0,0,string.format("VocÍ ja me ajudou contra aquelas aranhas terrÌveis, em Devias precisa de vocÍ"))
+	  MessageSend(bIndex,0,0,string.format("Voc√™ ja me ajudou contra aquelas aranhas terr√≠veis, em Devias precisa de voc√™"))
       NoticeSend(bIndex,1,("Encontre Nakine em Devias")) 	  
 	
 	end
 	 
 
 	   
-	--Segunda Miss„o, Quest 2 
+	--Segunda Miss√£o, Quest 2 
 if NPCQuest2 == NPC and Lista == 2 then
- MessageSend(bIndex,0,0,string.format("Ol· "..Name..", "..MessageGet(825)..""))
+ MessageSend(bIndex,0,0,string.format("Ol√° "..Name..", "..MessageGet(825)..""))
 	SQLQuery("UPDATE "..BD.." SET "..Quest.."= 3, "..Mob.."="..MOBKill01..", "..MobKill.."= 0 WHERE Name= '"..Name.."'");
 	SQLFetch();
 	SQLClose();
 	
 	elseif NPCQuest2 == NPC and Lista == 3 and Kill1 <= 129 then
-		MessageSend(bIndex,0,0,("Huuum... Ainda falta vocÍ matar alguns Elite Yeti, atÈ agora foram "..Kill1..""))
+		MessageSend(bIndex,0,0,("Huuum... Ainda falta voc√™ matar alguns Elite Yeti, at√© agora foram "..Kill1..""))
 		
 	elseif NPCQuest2 == NPC and Lista == 3 and Kill1 >= 130 then
-		MessageSend(bIndex,0,0,string.format("Ainda bem que vocÍ apareceu por aqui. Agora estamos todo mais despreocupados! Tome, vem comemorar!!"))
+		MessageSend(bIndex,0,0,string.format("Ainda bem que voc√™ apareceu por aqui. Agora estamos todo mais despreocupados! Tome, vem comemorar!!"))
 		SQLQuery("UPDATE "..BD.." SET quest1= 4, "..Mob.."="..MOBKill02..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
 		SQLQuery("UPDATE "..TablePcPoint.." SET "..ColumnPcPoint.."= "..ColumnPcPoint.."+"..RewardPcPoint2.." WHERE "..PlayerPcPoint.."= '"..Conta.."'") --// Pagar via WCoin
 		SQLFetch()
 		SQLClose()
 
-			NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu "..RewardPcPoint2.." de PcPoint!!"))
+			NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu "..RewardPcPoint2.." de PcPoint!!"))
 	
 	elseif NPCQuest2 == NPC and Lista == 4 then
-		MessageSend(bIndex,0,0,string.format("Obrigada a nÛs ajudar, agora aquele Castelo est· mais seguro. Procure pelo TESTE DE NOME em Lorencia."))
+		MessageSend(bIndex,0,0,string.format("Obrigada a n√≥s ajudar, agora aquele Castelo est√° mais seguro. Procure pelo TESTE DE NOME em Lorencia."))
 		
 end
 
@@ -646,52 +646,52 @@ if RewardType == 5 then
   SQLQuery("UPDATE "..BD.." SET "..MobKill.." = 0 WHERE Name= '"..Name.."'") 
   SQLFetch()
   SQLClose()
-	MessageSend(bIndex,0,0,string.format("Ol· Cidad„o, que bom ver vocÍ agora, precisamos de sua ajuda, mate aquelas aranhas na saida de lorencia e lhe darei algum item!"))
+	MessageSend(bIndex,0,0,string.format("Ol√° Cidad√£o, que bom ver voc√™ agora, precisamos de sua ajuda, mate aquelas aranhas na saida de lorencia e lhe darei algum item!"))
 	NoticeSend(bIndex,1, ("Kailene lhe pediu para matar 30 aranhas"))
 	
 	elseif NPCQuest1 == NPC and Lista == 1 and Kill1 <= COUNTKILL1 then
-	  MessageSend(bIndex,0,0, string.format("Oi novamente, fiquei sabendo que vocÍ j· conseguiu matar "..(Kill1).." aranhas"))
+	  MessageSend(bIndex,0,0, string.format("Oi novamente, fiquei sabendo que voc√™ j√° conseguiu matar "..(Kill1).." aranhas"))
 	  
 	elseif NPCQuest1 == NPC and Lista == 1 and Kill1 >= 30 then
-	  MessageSend(bIndex,0,0,string.format("Obrigada pela sua ajuda! H· mais residentes precisando da sua ajuda, encontre a filha da puta da minha irm„ em Devias"))
+	  MessageSend(bIndex,0,0,string.format("Obrigada pela sua ajuda! H√° mais residentes precisando da sua ajuda, encontre a filha da puta da minha irm√£ em Devias"))
 		SQLQuery("UPDATE "..BD.." SET quest1= 2, "..Mob.."="..MOBKill01..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
 		SQLQuery("UPDATE "..TablePcPoint.." SET "..ColumnPcPoint.."= "..ColumnPcPoint.."+"..RewardPcPoint.." WHERE "..PlayerPcPoint.."= '"..Conta.."'") --// Pagar via WCoin
   	    SQLFetch()
 	    SQLClose()
 			ItemGiveEx(bIndex, RewardItemIndex,RewardLevel,0,0,0,0,0)
 		
-			NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu Item e "..RewardPcPoint.." de PcPoint !!"))
+			NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu Item e "..RewardPcPoint.." de PcPoint !!"))
 
 	elseif NPCQuest1 == NPC and Lista >= 2 then ChatTargetSend(aIndex,-1,""..Name.." Obrigada, espero que seja util este item que entreguei")
-	  MessageSend(bIndex,0,0,string.format("VocÍ ja me ajudou contra aquelas aranhas terrÌveis, em Devias precisa de vocÍ"))
+	  MessageSend(bIndex,0,0,string.format("Voc√™ ja me ajudou contra aquelas aranhas terr√≠veis, em Devias precisa de voc√™"))
       NoticeSend(bIndex,1,("Encontre Nakine em Devias")) 	  
 	
 	end
 	 
 
 	   
-	--Segunda Miss„o, Quest 2 
+	--Segunda Miss√£o, Quest 2 
 if NPCQuest2 == NPC and Lista == 2 then
- MessageSend(bIndex,0,0,string.format("Ol· "..Name..", "..MessageGet(825)..""))
+ MessageSend(bIndex,0,0,string.format("Ol√° "..Name..", "..MessageGet(825)..""))
 	SQLQuery("UPDATE "..BD.." SET "..Quest.."= 3, "..Mob.."="..MOBKill01..", "..MobKill.."= 0 WHERE Name= '"..Name.."'");
 	SQLFetch();
 	SQLClose();
 	
 	elseif NPCQuest2 == NPC and Lista == 3 and Kill1 <= 129 then
-		MessageSend(bIndex,0,0,("Huuum... Ainda falta vocÍ matar alguns Elite Yeti, atÈ agora foram "..Kill1..""))
+		MessageSend(bIndex,0,0,("Huuum... Ainda falta voc√™ matar alguns Elite Yeti, at√© agora foram "..Kill1..""))
 		
 	elseif NPCQuest2 == NPC and Lista == 3 and Kill1 >= 130 then
-		MessageSend(bIndex,0,0,string.format("Ainda bem que vocÍ apareceu por aqui. Agora estamos todo mais despreocupados! Tome, vem comemorar!!"))
+		MessageSend(bIndex,0,0,string.format("Ainda bem que voc√™ apareceu por aqui. Agora estamos todo mais despreocupados! Tome, vem comemorar!!"))
 		SQLQuery("UPDATE "..BD.." SET quest1= 4, "..Mob.."="..MOBKill02..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
 		SQLQuery("UPDATE "..TablePcPoint.." SET "..ColumnPcPoint.."= "..ColumnPcPoint.."+"..RewardPcPoint2.." WHERE "..PlayerPcPoint.."= '"..Conta.."'") --// Pagar via WCoin
 		SQLFetch()
 		SQLClose()
 			ItemGiveEx(bIndex, RewardItemIndex2,RewardLevel2,0,0,0,0,0)
 
-			NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu Item e "..RewardPcPoint2.." de PcPoint!!"))
+			NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu Item e "..RewardPcPoint2.." de PcPoint!!"))
 	
 	elseif NPCQuest2 == NPC and Lista == 4 then
-		MessageSend(bIndex,0,0,string.format("Obrigada a nÛs ajudar, agora aquele Castelo est· mais seguro. Procure pelo TESTE DE NOME em Lorencia."))
+		MessageSend(bIndex,0,0,string.format("Obrigada a n√≥s ajudar, agora aquele Castelo est√° mais seguro. Procure pelo TESTE DE NOME em Lorencia."))
 		
 end
 
@@ -708,48 +708,48 @@ if RewardType == 6 then
   SQLQuery("UPDATE "..BD.." SET "..MobKill.." = 0 WHERE Name= '"..Name.."'") 
   SQLFetch()
   SQLClose()
-	MessageSend(bIndex,0,0,string.format("Ol· Cidad„o, que bom ver vocÍ agora, precisamos de sua ajuda, mate aquelas aranhas na saida de lorencia e lhe darei algum item!"))
+	MessageSend(bIndex,0,0,string.format("Ol√° Cidad√£o, que bom ver voc√™ agora, precisamos de sua ajuda, mate aquelas aranhas na saida de lorencia e lhe darei algum item!"))
 	NoticeSend(bIndex,1, ("Kailene lhe pediu para matar 30 aranhas"))
 	
 	elseif NPCQuest1 == NPC and Lista == 1 and Kill1 <= COUNTKILL1 then
-	  MessageSend(bIndex,0,0, string.format("Oi novamente, fiquei sabendo que vocÍ j· conseguiu matar "..(Kill1).." aranhas"))
+	  MessageSend(bIndex,0,0, string.format("Oi novamente, fiquei sabendo que voc√™ j√° conseguiu matar "..(Kill1).." aranhas"))
 	  
 	elseif NPCQuest1 == NPC and Lista == 1 and Kill1 >= 30 then
-	  MessageSend(bIndex,0,0,string.format("Obrigada pela sua ajuda! H· mais residentes precisando da sua ajuda, encontre a filha da puta da minha irm„ em Devias"))
+	  MessageSend(bIndex,0,0,string.format("Obrigada pela sua ajuda! H√° mais residentes precisando da sua ajuda, encontre a filha da puta da minha irm√£ em Devias"))
 		SQLQuery("UPDATE "..BD.." SET quest1= 2, "..Mob.."="..MOBKill01..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
   	    SQLFetch()
 	    SQLClose()
 			SetObjectLevelUpPoint(bIndex, (RewardPoint))
-			NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu "..RewardPoint.." de Status !!"))
+			NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu "..RewardPoint.." de Status !!"))
 
 	elseif NPCQuest1 == NPC and Lista >= 2 then ChatTargetSend(aIndex,-1,""..Name.." Obrigada, espero que seja util este item que entreguei")
-	  MessageSend(bIndex,0,0,string.format("VocÍ ja me ajudou contra aquelas aranhas terrÌveis, em Devias precisa de vocÍ"))
+	  MessageSend(bIndex,0,0,string.format("Voc√™ ja me ajudou contra aquelas aranhas terr√≠veis, em Devias precisa de voc√™"))
       NoticeSend(bIndex,1,("Encontre Nakine em Devias")) 	  
 	
 	end
 	 
 
 	   
-	--Segunda Miss„o, Quest 2 
+	--Segunda Miss√£o, Quest 2 
 if NPCQuest2 == NPC and Lista == 2 then
- MessageSend(bIndex,0,0,string.format("Ol· "..Name..", "..MessageGet(825)..""))
+ MessageSend(bIndex,0,0,string.format("Ol√° "..Name..", "..MessageGet(825)..""))
 	SQLQuery("UPDATE "..BD.." SET "..Quest.."= 3, "..Mob.."="..MOBKill01..", "..MobKill.."= 0 WHERE Name= '"..Name.."'");
 	SQLFetch();
 	SQLClose();
 	
 	elseif NPCQuest2 == NPC and Lista == 3 and Kill1 <= 129 then
-		MessageSend(bIndex,0,0,("Huuum... Ainda falta vocÍ matar alguns Elite Yeti, atÈ agora foram "..Kill1..""))
+		MessageSend(bIndex,0,0,("Huuum... Ainda falta voc√™ matar alguns Elite Yeti, at√© agora foram "..Kill1..""))
 		
 	elseif NPCQuest2 == NPC and Lista == 3 and Kill1 >= 130 then
-		MessageSend(bIndex,0,0,string.format("Ainda bem que vocÍ apareceu por aqui. Agora estamos todo mais despreocupados! Tome, vem comemorar!!"))
+		MessageSend(bIndex,0,0,string.format("Ainda bem que voc√™ apareceu por aqui. Agora estamos todo mais despreocupados! Tome, vem comemorar!!"))
 		SQLQuery("UPDATE "..BD.." SET quest1= 4, "..Mob.."="..MOBKill02..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
 		SQLFetch()
 		SQLClose()
 			SetObjectLevelUpPoint(bIndex, (RewardPoint2))
-			NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu "..RewardPoint.." de Status !!"))
+			NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu "..RewardPoint.." de Status !!"))
 	
 	elseif NPCQuest2 == NPC and Lista == 4 then
-		MessageSend(bIndex,0,0,string.format("Obrigada a nÛs ajudar, agora aquele Castelo est· mais seguro. Procure pelo TESTE DE NOME em Lorencia."))
+		MessageSend(bIndex,0,0,string.format("Obrigada a n√≥s ajudar, agora aquele Castelo est√° mais seguro. Procure pelo TESTE DE NOME em Lorencia."))
 		
 end
 
@@ -766,50 +766,50 @@ if RewardType == 7 then
   SQLQuery("UPDATE "..BD.." SET "..MobKill.." = 0 WHERE Name= '"..Name.."'") 
   SQLFetch()
   SQLClose()
-	MessageSend(bIndex,0,0,string.format("Ol· Cidad„o, que bom ver vocÍ agora, precisamos de sua ajuda, mate aquelas aranhas na saida de lorencia e lhe darei algum item!"))
+	MessageSend(bIndex,0,0,string.format("Ol√° Cidad√£o, que bom ver voc√™ agora, precisamos de sua ajuda, mate aquelas aranhas na saida de lorencia e lhe darei algum item!"))
 	NoticeSend(bIndex,1, ("Kailene lhe pediu para matar 30 aranhas"))
 	
 	elseif NPCQuest1 == NPC and Lista == 1 and Kill1 <= COUNTKILL1 then
-	  MessageSend(bIndex,0,0, string.format("Oi novamente, fiquei sabendo que vocÍ j· conseguiu matar "..(Kill1).." aranhas"))
+	  MessageSend(bIndex,0,0, string.format("Oi novamente, fiquei sabendo que voc√™ j√° conseguiu matar "..(Kill1).." aranhas"))
 	  
 	elseif NPCQuest1 == NPC and Lista == 1 and Kill1 >= 30 then
-	  MessageSend(bIndex,0,0,string.format("Obrigada pela sua ajuda! H· mais residentes precisando da sua ajuda, encontre a filha da puta da minha irm„ em Devias"))
+	  MessageSend(bIndex,0,0,string.format("Obrigada pela sua ajuda! H√° mais residentes precisando da sua ajuda, encontre a filha da puta da minha irm√£ em Devias"))
 		SQLQuery("UPDATE "..BD.." SET quest1= 2, "..Mob.."="..MOBKill01..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
         SQLQuery("UPDATE "..TableChar.." SET "..ColumnReset.."= "..ColumnReset.."+"..RewardReset.." WHERE "..PlayerReset.."= '"..Name.."'");
   	    SQLFetch()
 	    SQLClose()
 			SetObjectLevelUpPoint(bIndex, (RewardPoint))
-			NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu "..RewardPoint.." de Status e "..RewardReset.." de Resets !!"))
+			NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu "..RewardPoint.." de Status e "..RewardReset.." de Resets !!"))
 
 	elseif NPCQuest1 == NPC and Lista >= 2 then ChatTargetSend(aIndex,-1,""..Name.." Obrigada, espero que seja util este item que entreguei")
-	  MessageSend(bIndex,0,0,string.format("VocÍ ja me ajudou contra aquelas aranhas terrÌveis, em Devias precisa de vocÍ"))
+	  MessageSend(bIndex,0,0,string.format("Voc√™ ja me ajudou contra aquelas aranhas terr√≠veis, em Devias precisa de voc√™"))
       NoticeSend(bIndex,1,("Encontre Nakine em Devias")) 	  
 	
 	end
 	 
 
 	   
-	--Segunda Miss„o, Quest 2 
+	--Segunda Miss√£o, Quest 2 
 if NPCQuest2 == NPC and Lista == 2 then
- MessageSend(bIndex,0,0,string.format("Ol· "..Name..", "..MessageGet(825)..""))
+ MessageSend(bIndex,0,0,string.format("Ol√° "..Name..", "..MessageGet(825)..""))
 	SQLQuery("UPDATE "..BD.." SET "..Quest.."= 3, "..Mob.."="..MOBKill01..", "..MobKill.."= 0 WHERE Name= '"..Name.."'");
 	SQLFetch();
 	SQLClose();
 	
 	elseif NPCQuest2 == NPC and Lista == 3 and Kill1 <= 129 then
-		MessageSend(bIndex,0,0,("Huuum... Ainda falta vocÍ matar alguns Elite Yeti, atÈ agora foram "..Kill1..""))
+		MessageSend(bIndex,0,0,("Huuum... Ainda falta voc√™ matar alguns Elite Yeti, at√© agora foram "..Kill1..""))
 		
 	elseif NPCQuest2 == NPC and Lista == 3 and Kill1 >= 130 then
-		MessageSend(bIndex,0,0,string.format("Ainda bem que vocÍ apareceu por aqui. Agora estamos todo mais despreocupados! Tome, vem comemorar!!"))
+		MessageSend(bIndex,0,0,string.format("Ainda bem que voc√™ apareceu por aqui. Agora estamos todo mais despreocupados! Tome, vem comemorar!!"))
 		SQLQuery("UPDATE "..BD.." SET quest1= 4, "..Mob.."="..MOBKill02..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
 		SQLQuery("UPDATE "..TableChar.." SET "..ColumnReset.."= "..ColumnReset.."+"..RewardReset2.." WHERE "..PlayerReset.."= '"..Name.."'");
 		SQLFetch()
 		SQLClose()
 			SetObjectLevelUpPoint(bIndex, (RewardPoint2))
-			NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu "..RewardPoint2.." de Status e "..RewardReset2.." de Resets !!"))
+			NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu "..RewardPoint2.." de Status e "..RewardReset2.." de Resets !!"))
 	
 	elseif NPCQuest2 == NPC and Lista == 4 then
-		MessageSend(bIndex,0,0,string.format("Obrigada a nÛs ajudar, agora aquele Castelo est· mais seguro. Procure pelo TESTE DE NOME em Lorencia."))
+		MessageSend(bIndex,0,0,string.format("Obrigada a n√≥s ajudar, agora aquele Castelo est√° mais seguro. Procure pelo TESTE DE NOME em Lorencia."))
 		
 end
 
@@ -826,52 +826,52 @@ if RewardType == 8 then
   SQLQuery("UPDATE "..BD.." SET "..MobKill.." = 0 WHERE Name= '"..Name.."'") 
   SQLFetch()
   SQLClose()
-	MessageSend(bIndex,0,0,string.format("Ol· Cidad„o, que bom ver vocÍ agora, precisamos de sua ajuda, mate aquelas aranhas na saida de lorencia e lhe darei algum item!"))
+	MessageSend(bIndex,0,0,string.format("Ol√° Cidad√£o, que bom ver voc√™ agora, precisamos de sua ajuda, mate aquelas aranhas na saida de lorencia e lhe darei algum item!"))
 	NoticeSend(bIndex,1, ("Kailene lhe pediu para matar 30 aranhas"))
 	
 	elseif NPCQuest1 == NPC and Lista == 1 and Kill1 <= COUNTKILL1 then
-	  MessageSend(bIndex,0,0, string.format("Oi novamente, fiquei sabendo que vocÍ j· conseguiu matar "..(Kill1).." aranhas"))
+	  MessageSend(bIndex,0,0, string.format("Oi novamente, fiquei sabendo que voc√™ j√° conseguiu matar "..(Kill1).." aranhas"))
 	  
 	elseif NPCQuest1 == NPC and Lista == 1 and Kill1 >= 30 then
-	  MessageSend(bIndex,0,0,string.format("Obrigada pela sua ajuda! H· mais residentes precisando da sua ajuda, encontre a filha da puta da minha irm„ em Devias"))
+	  MessageSend(bIndex,0,0,string.format("Obrigada pela sua ajuda! H√° mais residentes precisando da sua ajuda, encontre a filha da puta da minha irm√£ em Devias"))
 		SQLQuery("UPDATE "..BD.." SET quest1= 2, "..Mob.."="..MOBKill01..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
         SQLQuery("UPDATE "..TableChar.." SET "..ColumnReset.."= "..ColumnReset.."+"..RewardReset.." WHERE "..PlayerReset.."= '"..Name.."'");
 		SQLQuery("UPDATE "..TableCoin.." SET "..RewardColumnCoin.."= "..RewardColumnCoin.."+"..RewardCoin.." WHERE "..PlayerCoin.."= '"..Conta.."'") --// Pagar via WCoin
   	    SQLFetch()
 	    SQLClose()
 			SetObjectLevelUpPoint(bIndex, (RewardPoint))
-			NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu "..RewardPoint.." de Status, "..RewardReset.." de Resets e "..RewardCoin.." de WCoin !!"))
+			NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu "..RewardPoint.." de Status, "..RewardReset.." de Resets e "..RewardCoin.." de WCoin !!"))
 
 	elseif NPCQuest1 == NPC and Lista >= 2 then ChatTargetSend(aIndex,-1,""..Name.." Obrigada, espero que seja util este item que entreguei")
-	  MessageSend(bIndex,0,0,string.format("VocÍ ja me ajudou contra aquelas aranhas terrÌveis, em Devias precisa de vocÍ"))
+	  MessageSend(bIndex,0,0,string.format("Voc√™ ja me ajudou contra aquelas aranhas terr√≠veis, em Devias precisa de voc√™"))
       NoticeSend(bIndex,1,("Encontre Nakine em Devias")) 	  
 	
 	end
 	 
 
 	   
-	--Segunda Miss„o, Quest 2 
+	--Segunda Miss√£o, Quest 2 
 if NPCQuest2 == NPC and Lista == 2 then
- MessageSend(bIndex,0,0,string.format("Ol· "..Name..", "..MessageGet(825)..""))
+ MessageSend(bIndex,0,0,string.format("Ol√° "..Name..", "..MessageGet(825)..""))
 	SQLQuery("UPDATE "..BD.." SET "..Quest.."= 3, "..Mob.."="..MOBKill01..", "..MobKill.."= 0 WHERE Name= '"..Name.."'");
 	SQLFetch();
 	SQLClose();
 	
 	elseif NPCQuest2 == NPC and Lista == 3 and Kill1 <= 129 then
-		MessageSend(bIndex,0,0,("Huuum... Ainda falta vocÍ matar alguns Elite Yeti, atÈ agora foram "..Kill1..""))
+		MessageSend(bIndex,0,0,("Huuum... Ainda falta voc√™ matar alguns Elite Yeti, at√© agora foram "..Kill1..""))
 		
 	elseif NPCQuest2 == NPC and Lista == 3 and Kill1 >= 130 then
-		MessageSend(bIndex,0,0,string.format("Ainda bem que vocÍ apareceu por aqui. Agora estamos todo mais despreocupados! Tome, vem comemorar!!"))
+		MessageSend(bIndex,0,0,string.format("Ainda bem que voc√™ apareceu por aqui. Agora estamos todo mais despreocupados! Tome, vem comemorar!!"))
 		SQLQuery("UPDATE "..BD.." SET quest1= 4, "..Mob.."="..MOBKill02..", "..MobKill.."= 0 WHERE Name= '"..Name.."'")
 		SQLQuery("UPDATE "..TableChar.." SET "..ColumnReset.."= "..ColumnReset.."+"..RewardReset2.." WHERE "..PlayerReset.."= '"..Name.."'");
 		SQLQuery("UPDATE "..TableCoin.." SET "..RewardColumnCoin.."= "..RewardColumnCoin.."+"..RewardCoin2.." WHERE "..PlayerCoin.."= '"..Conta.."'") --// Pagar via WCoin
 		SQLFetch()
 		SQLClose()
 			SetObjectLevelUpPoint(bIndex, (RewardPoint2))
-			NoticeSend(bIndex,1,(""..Name..", vocÍ Recebeu "..RewardPoint2.." de Status, "..RewardReset2.." de Resets e "..RewardCoin2.." de WCoin !!"))
+			NoticeSend(bIndex,1,(""..Name..", voc√™ Recebeu "..RewardPoint2.." de Status, "..RewardReset2.." de Resets e "..RewardCoin2.." de WCoin !!"))
 	
 	elseif NPCQuest2 == NPC and Lista == 4 then
-		MessageSend(bIndex,0,0,string.format("Obrigada a nÛs ajudar, agora aquele Castelo est· mais seguro. Procure pelo TESTE DE NOME em Lorencia."))
+		MessageSend(bIndex,0,0,string.format("Obrigada a n√≥s ajudar, agora aquele Castelo est√° mais seguro. Procure pelo TESTE DE NOME em Lorencia."))
 		
 end
 
