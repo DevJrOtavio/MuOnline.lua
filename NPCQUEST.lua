@@ -1,4 +1,4 @@
---[[ SCRIPT DESENVOLVIDO POR OTAVIO PARA KINGDOMMU.COM.BR
+	--[[ SCRIPT DESENVOLVIDO POR OTAVIO PARA KINGDOMMU.COM.BR
 	Créditos a "GUGA, NICACIO" por ensinar a usar comandos
 	DÚVIDA OU MODIFICAÇÕES +55 11 9 4702 6877 
 	
@@ -24,8 +24,8 @@ function OnReadScript()
 	
 	
 	---------Tabelas e Colunas -------|
-	BD = "MonsterKillCount"			--|
-	TableCoin = "MEMB_INFO"			--|	
+	BD = "MonsterKillCount"		--|
+	TableCoin = "MEMB_INFO"		--|	
 	TablePcPoint = "PcPointData"	--|
 	TableChar = "Character"         --|
  	
@@ -35,24 +35,24 @@ function OnReadScript()
 	ColumnPcPoint = "PcPoint"   --|
 	ColumnReset = "ResetCount"  --|
 	
-    PlayerReset = "Name"        --|	   	
-	PlayerCoin = "memb___id" 	--|
+   	 PlayerReset = "Name"       --|	   	
+	PlayerCoin = "memb___id"    --|
 	PlayerPcPoint = "AccountID" --|
-----------------------------------|
+--------------------------------------|
 --Editar Modo de Ganho e Coluna
-	RewardType = 1; -- 1 para recebe Moedas | 2 Receber item | 3 Item e Moeda | 4 Receber PcPoint | 5 Receber PcPoint e item | 6 Receber pontos | 7 Receber pontos e Resets | 8 Pontos, Resets e Cash 
+	RewardType = 1; -->>Desativado 1 para recebe Moedas | 2 Receber item | 3 Item e Moeda | 4 Receber PcPoint | 5 Receber PcPoint e item | 6 Receber pontos | 7 Receber pontos e Resets | 8 Pontos, Resets e Cash 
 	RewardColumnCoin = "Cash"; -- Nome da Coluna de WCoin desejada
 	
 --NPC                   				 Monstro						Quantidade
-	NPCQuest1 = 507;--[[Lorencia]]		MOBKill01 = 3;--[[Spiders]]		COUNTKILL1 = 34;
-	NPCQuest2 = 505;--[[Devias]]		MOBKill02 = 20;--[[Elit Yeti]]	COUNTKILL2 = 129;
-	NPCQuest3 = 517;--[[Noria ]]		MOBKill03 = 30;--[[Forest]]		COUNTKILL3 = 149; 
-	NPCQuest4 = 519;--[[Atlans]]		MOBKill04 = 48;--[[wizard]]		COUNTKILL4 = 169;
-	NPCQuest5 = 518;--[[Icarus]]		MOBKill05 = 72;--[[Phantom ]]	COUNTKILL5 = 200; 
-	NPCQuest6 =	516;--[[Tarkan]]		MOBKill06 = 502;--[[Anubis]]	COUNTKILL6 = 20; 
-	NPCQuest7 =	521;--[[Kanturun3]]		MOBKill07 = 360;--[[Dreadfear]]	COUNTKILL7 = 251; 
-	NPCQuest8 = 522;--[[Aida2]]			MOBKill08 = 309;--[[hellmina]]	COUNTKILL8 = 21; 
-	NPCQuest9 =	520;--[[Crywolf]]		MOBKill09 = 315;--[[Werewolf(Hero)]]	COUNTKILL9 = 250;
+	NPCQuest1 = 507;--[[Lorencia]]			MOBKill01 = 3;--[[Spiders]]			COUNTKILL1 = 34;
+	NPCQuest2 = 505;--[[Devias]]			MOBKill02 = 20;--[[Elit Yeti]]			COUNTKILL2 = 129;
+	NPCQuest3 = 517;--[[Noria ]]			MOBKill03 = 30;--[[Forest]]			COUNTKILL3 = 149; 
+	NPCQuest4 = 519;--[[Atlans]]			MOBKill04 = 48;--[[wizard]]			COUNTKILL4 = 169;
+	NPCQuest5 = 518;--[[Icarus]]			MOBKill05 = 72;--[[Phantom ]]			COUNTKILL5 = 200; 
+	NPCQuest6 =	516;--[[Tarkan]]		MOBKill06 = 502;--[[Anubis]]			COUNTKILL6 = 20; 
+	NPCQuest7 =	521;--[[Kanturun3]]		MOBKill07 = 360;--[[Dreadfear]]			COUNTKILL7 = 251; 
+	NPCQuest8 = 522;--[[Aida2]]			MOBKill08 = 309;--[[hellmina]]			COUNTKILL8 = 21; 
+	NPCQuest9 =	520;--[[Crywolf]]		MOBKill09 = 315;--[[Werewolf(Hero)]]		COUNTKILL9 = 250;
 	--NPCQuest10 = 249;					MOBKill10 = 10;					COUNTKILL10 = 35;  
 
 		
@@ -63,11 +63,11 @@ function OnReadScript()
 	RewardItemIndex3 = 6178;			RewardLevel3 = 0;				RewardOptions3 = 0;				RewardSkill3 = 0;
 	RewardItemIndex4 = 6178;			RewardLevel4 = 0;				RewardOptions4 = 0;				RewardSkill4 = 0;
 	RewardItemIndex5 = 6670;			RewardLevel5 = 0;				RewardOptions5 = 0;				RewardSkill5 = 0;
-	RewardItemIndex6 = 6178;			RewardLevel6 = 0;				RewardOptions6 = 0; 			RewardSkill6 = 0;
+	RewardItemIndex6 = 6178;			RewardLevel6 = 0;				RewardOptions6 = 0; 				RewardSkill6 = 0;
 	RewardItemIndex7 = 6178;			RewardLevel7 = 0;				RewardOptions7 = 0;				RewardSkill7 = 0;
 	RewardItemIndex8 = 6178; 			RewardLevel8 = 0;				RewardOptions8 = 0;				RewardSkill8 = 0;
 	RewardItemIndex9 = 6178;			RewardLevel9 = 0;				RewardOptions9 = 0;				RewardSkill9 = 0;
-	RewardItemIndex10 = 6178;			RewardLevel10 = 0;				RewardOptions10 = 0;			RewardSkill10 = 0;		
+	RewardItemIndex10 = 6178;			RewardLevel10 = 0;				RewardOptions10 = 0;				RewardSkill10 = 0;		
 	
 	
 --WCoin									 PcPoint						Status 							Resets	
